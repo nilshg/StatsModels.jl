@@ -18,6 +18,8 @@ StatsModels.apply_schema(mt::MultiTerm, sch::StatsModels.Schema, Mod::Type) =
 
     @testset "concrete_term" begin
         t = term(:aaa)
+        ts = term("aaa")
+        @test t == ts
         @test string(t) == "aaa"
         @test mimestring(t) == "aaa(unknown)"
 
@@ -49,7 +51,7 @@ StatsModels.apply_schema(mt::MultiTerm, sch::StatsModels.Schema, Mod::Type) =
         @test mimestring(t2full) == "aaa(StatsModels.FullDummyCoding:2→2)"
         @test string(t2full) == "aaa"
     end
-    
+
     @testset "term operators" begin
         a = term(:a)
         b = term(:b)
@@ -148,5 +150,5 @@ StatsModels.apply_schema(mt::MultiTerm, sch::StatsModels.Schema, Mod::Type) =
         end
 
     end
-    
+
 end

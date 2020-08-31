@@ -32,7 +32,7 @@ A basic formula is composed of individual *terms*—symbols which refer to data
 columns, or literal numbers `0` or `1`—combined by `+`, `&`, `*`, and (at the
 top level) `~`.
 
-!!! note 
+!!! note
 
     The `@formula` macro **must** be called with parentheses to ensure that
     the formula is parsed properly.
@@ -109,13 +109,13 @@ the column from the data named `:y`.  The response can be accessed with the
 analogous `response(f, df)` function.
 
 !!! note
-    
+
     To make a "one-sided" formula (with no response), put a `0` on the left-hand
     side, like `@formula(0 ~ 1 + a + b)`.
 
 The right hand side is made up of a number of different **terms**, separated by
 `+`: `1 + a + b + c + b&c`.  Each term corresponds to one or more columns in the
-generated model matrix: 
+generated model matrix:
 
 * The first term `1` generates a constant or "intercept" column full of `1.0`s.
 * The next two terms `a` and `b` correspond to columns from the data table
@@ -299,10 +299,10 @@ Predictors:
     long as the packages have [implemented support for them](@ref extend-runtime).
 
 The [`term`](@ref) function constructs a term of the appropriate type from
-symbols and numbers, which makes it easy to work with collections of mixed type:
+symbols, strings, and numbers, which makes it easy to work with collections of mixed type:
 
 ```jldoctest 1
-julia> ts = term.((1, :a, :b))
+julia> ts = term.((1, :a, "b"))
 1
 a(unknown)
 b(unknown)
